@@ -10,8 +10,6 @@ courseInfoTextContainer.forEach(function(el, index) {
   futureCourses.push(eval('courseInfo' + (index + 1)).filter(course => now < course.courseDate1));
 })
 
-console.log(futureCourses);
-
 // Days and months variables
 const monthNames = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 const dayNames = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
