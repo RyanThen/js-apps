@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pet Adoption App</title>
+
+  <link rel="stylesheet" href="css/pet-adoption.css">
+</head>
+<body>
+
+  <form method="get" class="search-form container">
+    <div class="search-form__search-container">
+      <label for="name">Search for a pet or organization: </label>
+      <input type="text" name="searchInput" id="main-search" required>
+    </div>
+    <div class="search-form__submit-container">
+      <input type="submit" value="Search!">
+    </div>
+  </form>
+
+  <div class="pet-finder-container container"></div>
+
+  <div class="random-cat-fact-container container"></div>
+
+  <script src="js/searchForm.js"></script>
+  <script src="js/petAdoption.js"></script>
+</body>
+</html>
