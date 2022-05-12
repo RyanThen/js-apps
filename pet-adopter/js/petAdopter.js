@@ -1,4 +1,4 @@
-const petFinderApiToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwVEVlRWdmeVdicGhkNFpjQlEzam5UWHI5ckhjcE92eDQ3UlBYanBqcEZjUm1ubW9wZyIsImp0aSI6ImY5OGNmNTcyYTA1Yzc3N2RkYjg1YjIxMzNjNmU3NGI3NzVhZTVkOGNhNTYzMzBkZjE4MzAxMGI1YWI4OWQyYjYxNmJjYzI3OGI5ODNkN2U0IiwiaWF0IjoxNjUyMzE3MTc0LCJuYmYiOjE2NTIzMTcxNzQsImV4cCI6MTY1MjMyMDc3NCwic3ViIjoiIiwic2NvcGVzIjpbXX0.a0N9ZIG8Y8bkY5o1xE-AGOumukYDcwBH67BY6pp3F9mDIOaWw0JPvb1-qlSQYPu9if3GjyNP90vMPQgTxMzrvUsbvgA5w1rQKh5kK9eDhKGyGfLsYY_p7rWSbACD_rVCiOckBY4mmm5QH8U-af5bM-UHpy66tyYLl_v8JsGa-C-CGpaHFNdhr6TlKDbMOZhI6UbvUNjAXS19efBMEMB4oPQbmGmCq5YpQMVPsbvbzBI0VLuZhfHQspqShOz0hs1ZD8-y6qlp0lSa9OvjZFF58wWlTkawEviqR-001U9499dlbalJqF40ZV3xxJtR4t261pKFQK6E5SvRcV-QJNbfKw';
+const petFinderApiToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwVEVlRWdmeVdicGhkNFpjQlEzam5UWHI5ckhjcE92eDQ3UlBYanBqcEZjUm1ubW9wZyIsImp0aSI6ImJmNWFiMjhjMTZjNWJkY2MzNGZmYTUyMjRkNTA2YmI5NjNhNzk4NGVjODM5ZGZkZTlhMjYxMTU1MmI1NjE3Njg1YWU4MDM4MzkzOWYyMDM3IiwiaWF0IjoxNjUyMzIxMTU2LCJuYmYiOjE2NTIzMjExNTYsImV4cCI6MTY1MjMyNDc1Niwic3ViIjoiIiwic2NvcGVzIjpbXX0.vVxwN9__kqouBvfazbwCwdp_nFB9fhGxKloYCJqmDTIt1OwJ_kbSiO2_ZzECm5zyidKoT0soy8MbSO_3mNWlA9Mfpv0IcwMTIJtt5f0NmMuO5ToyaXxVZhVAebkUtB1OwYcnViCTlou3kV2cAcF-0-iEWMlSneFhK71HuCVm71vdkENa9SA7QzDf9aMfE1N8TJSZ48-OX5sm5LzugqInP7rYYn2UFXXRlDcvXI06BdWGVf3kcARAsOe4PZAJ4UnQ1aXtgWI9tFsxlBkvGQFFc1CcmwYz0D0hTfSpyc6oQfKD566e5N0W4WoL_61Ze5i4S_MdJEXoB7aMAkOMBmVZfg';
 
 const randomCatFactContainer = document.querySelector('.random-cat-fact-container');
 const petFinderContainer = document.querySelector('.pet-finder-container');
@@ -62,9 +62,11 @@ searchFormSubmitBtn.addEventListener('click', function(e) {
 // PetFinder API Call -- All Animals
 fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
   .then(response => response.json())
-  .then( (data) => {
-    data.animals.forEach((animal) => {
-      petFinderContainer.insertAdjacentHTML('beforeend', `
+  .then(data => {
+    let template = ``;
+
+    data.animals.forEach(animal => {
+      template += `
         <div class="card">
           <div class="card__img-container">
             <img class="card__img" src="${animal.photos.length == 0 ? '#' : animal.photos[0].medium}">
@@ -93,10 +95,11 @@ fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bear
               <p><a href="${animal.url ? animal.url : '#'}" target="_blank">PetFinder Link</a></p>
             </div>
           </div>
-
         </div>
-      `);
+      `;
     })
+
+    petFinderContainer.insertAdjacentHTML('beforeend', template);
 
     console.log(data);
   })
