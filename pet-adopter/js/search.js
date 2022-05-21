@@ -43,7 +43,7 @@ const generateCardTemplate = function(array) {
   return template;
 }
 
-// PetFinder API Call -- Search By ID
+// Search By Animal ID
 const searchAnimalById = function(searchFromInputValue) {
   fetch('https://api.petfinder.com/v2/animals/' + searchFromInputValue, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
     .then(response => response.json())
