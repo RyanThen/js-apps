@@ -11,21 +11,55 @@
 </head>
 <body>
 
-  <form class="search-form container">
-    <div class="search-form__search-container">
-      <label for="searchInput">Search for a pet or organization: </label>
-      <input type="text" name="searchInput" id="main-search" required>
-    </div>
-    <div class="search-form__submit-container">
-      <input type="submit" value="Search!">
-    </div>
-  </form>
+  <div class="full-page-container container">
 
-  <div class="pet-finder-container container"></div>
+    <!-- Text search -->
+    <form class="search-form">
+      <div class="search-form__search-container">
+        <label for="searchInput">Search for a pet or organization: </label>
+        <input type="text" name="searchInput" id="main-search" required>
+      </div>
+      <div class="search-form__submit-container">
+        <input type="submit" value="Search!">
+      </div>
+    </form>
 
-  <div class="random-cat-fact-container container"></div>
+    <!-- Radio button search -->
+    <form class="search-checkboxes">
+      <div class="search-checkboxes__radio-group-container">
+        <p class="search-checkboxes__radio-group-title">Choose species:</p>
+        <input type="radio" id="species-dog" name="species" value="species-dog">
+        <label for="species-dog">Dog</label>
+        <input type="radio" id="species-cat" name="species" value="species-cat">
+        <label for="species-cat">Cat</label>
+        <input type="radio" id="species-np" name="species" value="species-np">
+        <label for="species-np">No Preference</label>
+      </div>
+      <div class="search-checkboxes__radio-group-container">
+        <p class="search-checkboxes__radio-group-title">Choose age:</p>
+        <input type="radio" id="age-dog" name="age" value="age-baby">
+        <label for="species-dog">baby</label>
+        <input type="radio" id="age-cat" name="age" value="age-cat">
+        <label for="age-cat">Cat</label>
+        <input type="radio" id="age-np" name="age" value="age-np">
+        <label for="age-np">No Preference</label>
+      </div>
+      <div class="search-checkboxes__submit-container">
+        <input type="submit" value="Search!">
+      </div>
+    </form>
 
-  <script src="js/searchForm.js"></script>
+    <div class="search-results-container"></div>
+
+    <div class="random-cat-fact-container"></div>
+
+  </div> <!-- /  End .full-page-container  / -->
+
+
+  <!-- JavaScript -->
+  <script src="js/global.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/search.js"></script>
   <script src="js/petAdopter.js"></script>
 </body>
 </html>
