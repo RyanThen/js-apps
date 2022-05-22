@@ -3,7 +3,7 @@ const searchFormInput = searchForm.querySelector('.search-form__search-container
 const searchFormSubmitBtn = searchForm.querySelector('.search-form__submit-container input');
 
 const generateCardTemplate = function(array) {
-  
+
   let template = ``;
 
   array.forEach(single => {
@@ -43,9 +43,9 @@ const generateCardTemplate = function(array) {
   return template;
 }
 
-// Search By Animal ID
+// Search for a specific animal
 const searchSpecificAnimal = function(searchFromInputValue) {
-  // If search is a number
+  // If search term is a number
   if(!isNaN(searchFromInputValue)) {
     fetch('https://api.petfinder.com/v2/animals/' + searchFromInputValue, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
     .then(response => response.json())
@@ -55,39 +55,34 @@ const searchSpecificAnimal = function(searchFromInputValue) {
 
       return;
     })
-    // .catch(err => alert(err));
-  // If search is a string
+    .catch(err => alert(err));
+  // If search term is a string
   } else {
     fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
       .then(response => response.json())
       .then(data => {
-
+        // Revise strings in order to compare for conditional check
+        let searchFormInputValueRevised = searchFromInputValue.toLowerCase().trim();
+        let animalNameRevised;
+        // Loop through animal data
         data.animals.forEach(function(animal){
-          ///////////////////////////////////////////////////////////////////////////////////
-          // MAKE THIS SEARCH SMARTER BY REMOVING CASE SENSITIVITY AND SURROUNDING SPACING //
-          ///////////////////////////////////////////////////////////////////////////////////
-          if(animal.name == searchFromInputValue) {
+          // Lower case and trim animal name
+          animalNameRevised = animal.name.toLowerCase().trim();
+          // Generate card if name makes search term
+          if(animalNameRevised === searchFormInputValueRevised) {
             searchResultsContainer.innerHTML = generateCardTemplate([animal]);
           }
-
-        })
-
+        });
       })
-    
-    // searchResultsContainer.innerHTML = generateCardTemplate([data.animal]);
-    // alert(searchFromInputValue);
-
-  }
+      .catch(err => alert(err));
+  }  // End else
 
 }
 
 // Search Form Button Functionality
 searchFormSubmitBtn.addEventListener('click', function(e) {
   e.preventDefault();
-
   searchSpecificAnimal(searchFormInput.value);
-
-  // console.log(searchFormInput.value);
 });
 
 
@@ -95,11 +90,9 @@ searchFormSubmitBtn.addEventListener('click', function(e) {
 fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
   .then(response => response.json())
   .then(data => {
-
     // Populate animals 
     searchResultsContainer.insertAdjacentHTML('afterbegin', generateCardTemplate(data.animals));
 
     console.log(data);
-
   })
-  // .catch(err => alert(err));
+  .catch(err => alert(err));
