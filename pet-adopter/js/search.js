@@ -44,27 +44,50 @@ const generateCardTemplate = function(array) {
 }
 
 // Search By Animal ID
-const searchAnimalById = function(searchFromInputValue) {
-  fetch('https://api.petfinder.com/v2/animals/' + searchFromInputValue, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
+const searchSpecificAnimal = function(searchFromInputValue) {
+  // If search is a number
+  if(!isNaN(searchFromInputValue)) {
+    fetch('https://api.petfinder.com/v2/animals/' + searchFromInputValue, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
     .then(response => response.json())
     .then(data => { 
-
       // Replace search results container content with new animal 
       searchResultsContainer.innerHTML = generateCardTemplate([data.animal]);
-    
-      console.log(searchResultsContainer);
 
+      return;
     })
     // .catch(err => alert(err));
+  // If search is a string
+  } else {
+    fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
+      .then(response => response.json())
+      .then(data => {
+
+        data.animals.forEach(function(animal){
+          ///////////////////////////////////////////////////////////////////////////////////
+          // MAKE THIS SEARCH SMARTER BY REMOVING CASE SENSITIVITY AND SURROUNDING SPACING //
+          ///////////////////////////////////////////////////////////////////////////////////
+          if(animal.name == searchFromInputValue) {
+            searchResultsContainer.innerHTML = generateCardTemplate([animal]);
+          }
+
+        })
+
+      })
+    
+    // searchResultsContainer.innerHTML = generateCardTemplate([data.animal]);
+    // alert(searchFromInputValue);
+
+  }
+
 }
 
 // Search Form Button Functionality
 searchFormSubmitBtn.addEventListener('click', function(e) {
   e.preventDefault();
 
-  searchAnimalById(searchFormInput.value);
+  searchSpecificAnimal(searchFormInput.value);
 
-  console.log(searchFormInput.value);
+  // console.log(searchFormInput.value);
 });
 
 
