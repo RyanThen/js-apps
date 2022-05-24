@@ -43,6 +43,17 @@ const generateCardTemplate = function(array) {
   return template;
 }
 
+// Display all animals on page load
+fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
+  .then(response => response.json())
+  .then(data => {
+    // Populate animals 
+    searchResultsContainer.insertAdjacentHTML('afterbegin', generateCardTemplate(data.animals));
+
+    console.log(data);
+  })
+  .catch(err => console.log(err));
+
 // Search for a specific animal
 const searchSpecificAnimal = function(searchFromInputValue) {
   // If search term is a number
@@ -55,7 +66,7 @@ const searchSpecificAnimal = function(searchFromInputValue) {
 
       return;
     })
-    .catch(err => alert(err));
+    .catch(err => console.log(err));
   // If search term is a string
   } else {
     fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
@@ -74,25 +85,28 @@ const searchSpecificAnimal = function(searchFromInputValue) {
           }
         });
       })
-      .catch(err => alert(err));
+      .catch(err => console.log(err));
   }  // End else
 
 }
 
-// Search Form Button Functionality
+// Search form button functionality
 searchFormSubmitBtn.addEventListener('click', function(e) {
   e.preventDefault();
   searchSpecificAnimal(searchFormInput.value);
 });
 
 
-// Display All Animals By Default
-fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
-  .then(response => response.json())
-  .then(data => {
-    // Populate animals 
-    searchResultsContainer.insertAdjacentHTML('afterbegin', generateCardTemplate(data.animals));
+// Checkbox search
+const searchCheckboxes = document.querySelector('.search-checkboxes');
+const searchCheckboxesSpeciesGroupWrap = searchCheckboxes.querySelector('.search-checkboxes--species-group');
+const searchCheckboxesAgeGroupWrap = searchCheckboxes.querySelector('.search-checkboxes--age-group');
+const searchCheckboxesSubmitBtn = searchCheckboxes.querySelector('.search-checkboxes__submit-container');
 
-    console.log(data);
-  })
-  .catch(err => alert(err));
+searchCheckboxes.addEventListener('click', function(e){
+  // e.preventDefault();
+
+  if(e.target.value == 'species-dog') alert('dog');
+  if(e.target.value == 'species-cat') alert('cat');
+  if(e.target.value == 'species-np') alert('no pref');
+});
