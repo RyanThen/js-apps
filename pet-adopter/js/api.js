@@ -1,1 +1,1 @@
-const petFinderApiToken = 'API TOKEN';
+const petFinderApiToken = 'API_TOKEN';
