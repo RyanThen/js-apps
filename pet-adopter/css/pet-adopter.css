@@ -12,20 +12,21 @@
 p { margin: 15px 0; }
 .container { width: 100%; max-width: 1350px; margin: 0 auto; padding: 15px; }
 
+.form-btn { font-size: 16px; padding: 5px 10px; color: var(--main-text-color); background-color: var(--light-bg-neutral); border-radius: 5px; cursor: pointer; transition: 300ms; }
+.form-btn:hover { background-color: lightgrey; transition: 300ms; }
+
 /* Search form */
 form.search-form { margin-top: 20px; }
 .search-form__search-container { display: inline-block; margin-right: 10px; margin-bottom: 10px; }
 .search-form__search-container input { margin-bottom: 10px; }
 .search-form__submit-container { display: inline-block; }
-.search-form__submit-container input { font-size: 16px; padding: 5px 10px; color: var(--main-text-color); background-color: var(--light-bg-neutral); border-radius: 5px; cursor: pointer; transition: 300ms; }
-.search-form__submit-container input:hover { background-color: lightgrey; transition: 300ms; }
 
 /* Search checkboxes */
-.search-checkboxes { padding: 20px; border: 1px solid lightgrey; }
-.search-checkboxes__radio-group-container { color: var(--main-text-color); }
-.search-checkboxes__radio-group-title { margin: 15px 0 5px 0; }
-.search-checkboxes__radio-group-container:first-of-type .search-checkboxes__radio-group-title { margin-top: 0; }
-.search-checkboxes__submit-container { margin: 10px 0 0 0; }
+.search-filter { padding: 20px; border: 1px solid lightgrey; }
+.search-filter__radio-group-container { color: var(--main-text-color); }
+.search-filter__radio-group-title { margin: 15px 0 5px 0; }
+.search-filter__radio-group-container:first-of-type .search-filter__radio-group-title { margin-top: 0; }
+.search-filter__submit-container { margin: 10px 0 0 0; }
 
 .search-results-container { display: grid; grid-template-columns: repeat(var(--max-columns), 1fr); width: 100%; }
 
@@ -33,7 +34,7 @@ form.search-form { margin-top: 20px; }
 .card:nth-child(4n) { margin-right: 0; }
 
 .card__img-container { position: relative; width: 100%; }
-.card__img { height: 250px; width: 100%; object-fit: cover;}
+.card__img { height: 250px; width: 100%; max-width: 310px; object-fit: cover;}
 .card__img-tag { position: absolute; top: 10px; right: 10px; display: inline-block; padding: 5px 8px; color: var(--main-text-color); background-color: var(--light-bg-neutral); border-radius: 20px; text-transform: capitalize; }
 
 .card__trailing-content-headline { margin-bottom: 4px; text-decoration: underline; }
