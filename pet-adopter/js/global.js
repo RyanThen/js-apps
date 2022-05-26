@@ -2,13 +2,17 @@
 const randomCatFactContainer = document.querySelector('.random-cat-fact-container');
 const searchResultsContainer = document.querySelector('.search-results-container');
 
+const searchFilter = document.forms['search-filter'];
+let speciesSearchFilter;
+let ageSearchFilter;
+
 // Functions
 const generateCardTemplate = function(array) {
 
-  let template = ``;
+  let cardTemplate = '';
 
   array.forEach(single => {
-    template += `
+    cardTemplate += `
       <div class="card">
         <div class="card__img-container">
           <img class="card__img" src="${single.photos.length == 0 ? '#' : single.photos[0].medium}">
@@ -41,5 +45,36 @@ const generateCardTemplate = function(array) {
     `;
   });
 
-  return template;
+  return cardTemplate;
+}
+
+
+const filteredAnimalSearch = function(url) {
+  // get radio button values
+  speciesSearchFilter = searchFilter['species'].value;
+  ageSearchFilter = searchFilter['age'].value;
+
+  fetch(url, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
+    .then(response => response.json())
+    .then(data => {
+    
+      // generate filtered search cards
+      const generateFilteredCards = function(species, age) {
+        let speciesSingle;
+        let ageSingle;
+        let filteredSearchTemplate = '';
+    
+        data.animals.forEach(function(animal){
+          // set search filter values for subsequent conditional checks
+          species === 'No Preference' ? speciesSingle = animal.species : speciesSingle = species;
+          age === 'No Preference' ? ageSingle = animal.age : ageSingle = age;
+          // build filted search template
+          if(animal.species === speciesSingle && animal.age === ageSingle) filteredSearchTemplate += generateCardTemplate([animal]);      
+        });
+    
+        searchResultsContainer.insertAdjacentHTML('afterbegin', filteredSearchTemplate);
+      }
+    
+      generateFilteredCards(speciesSearchFilter, ageSearchFilter);
+    })
 }
