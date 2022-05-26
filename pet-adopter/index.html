@@ -14,38 +14,38 @@
   <div class="full-page-container container">
 
     <!-- Text search -->
-    <form class="search-form">
+    <form class="search-form" id="search-form">
       <div class="search-form__search-container">
         <label for="searchInput">Search for a pet by Name or ID: </label>
-        <input type="text" name="searchInput" id="main-search" required>
+        <input type="text" name="searchInput" id="main-search" autofocus>
       </div>
       <div class="search-form__submit-container">
-        <input type="submit" value="Search!">
+        <input class="form-btn" type="submit" value="Search!">
       </div>
     </form>
 
     <!-- Radio button search -->
-    <form class="search-checkboxes">
-      <div class="search-checkboxes__radio-group-container search-checkboxes--species-group">
-        <p class="search-checkboxes__radio-group-title">Choose species:</p>
-        <input type="radio" id="species-dog" name="species" value="species-dog">
+    <form class="search-filter" id="search-filter">
+      <div class="search-filter__radio-group-container search-filter--species-group">
+        <p class="search-filter__radio-group-title">Choose species:</p>
+        <input type="radio" id="species-dog" name="species" value="Dog">
         <label for="species-dog">Dog</label>
-        <input type="radio" id="species-cat" name="species" value="species-cat">
+        <input type="radio" id="species-cat" name="species" value="Cat">
         <label for="species-cat">Cat</label>
-        <input type="radio" id="species-np" name="species" value="species-np">
+        <input type="radio" id="species-np" name="species" value="No Preference">
         <label for="species-np">No Preference</label>
       </div>
-      <div class="search-checkboxes__radio-group-container search-checkboxes--age-group">
-        <p class="search-checkboxes__radio-group-title">Choose age:</p>
-        <input type="radio" id="age-dog" name="age" value="age-baby">
-        <label for="species-dog">Baby</label>
-        <input type="radio" id="age-cat" name="age" value="age-cat">
-        <label for="age-cat">Adult</label>
-        <input type="radio" id="age-np" name="age" value="age-np">
+      <div class="search-filter__radio-group-container search-filter--age-group">
+        <p class="search-filter__radio-group-title">Choose age:</p>
+        <input type="radio" id="age-baby" name="age" value="Baby">
+        <label for="age-baby">Baby</label>
+        <input type="radio" id="age-adult" name="age" value="Adult">
+        <label for="age-adult">Adult</label>
+        <input type="radio" id="age-np" name="age" value="No Preference">
         <label for="age-np">No Preference</label>
       </div>
-      <div class="search-checkboxes__submit-container">
-        <input type="submit" value="Search!">
+      <div class="search-filter__submit-container">
+        <input class="form-btn" type="submit" value="Search!">
       </div>
     </form>
 
@@ -53,6 +53,7 @@
 
     <div class="random-cat-fact-container"></div>
 
+    <div id="spacer" style="height: 1000px;"></div>
     <div id="page-bottom"></div>
 
   </div> <!-- /  End .full-page-container  / -->
