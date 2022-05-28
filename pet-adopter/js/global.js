@@ -2,6 +2,10 @@
 const randomCatFactContainer = document.querySelector('.random-cat-fact-container');
 const searchResultsContainer = document.querySelector('.search-results-container');
 
+const searchForm = document.querySelector('.search-form');
+const searchFormInput = searchForm.querySelector('.search-form__search-container input');
+const searchFormSubmitBtn = searchForm.querySelector('.search-form__submit-container input');
+
 const searchFilter = document.forms['search-filter'];
 let speciesSearchFilter;
 let ageSearchFilter;

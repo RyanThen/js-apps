@@ -1,9 +1,4 @@
-//-- Search form - specific search --//
-const searchForm = document.querySelector('.search-form');
-const searchFormInput = searchForm.querySelector('.search-form__search-container input');
-const searchFormSubmitBtn = searchForm.querySelector('.search-form__submit-container input');
-
-// search for a specific animal
+// Search form - specific search
 const searchSpecificAnimal = function(searchFromInputValue) {
   // if search term is a number
   if(!isNaN(searchFromInputValue)) {
@@ -16,6 +11,8 @@ const searchSpecificAnimal = function(searchFromInputValue) {
       .catch(err => console.log(err));
   } else {
     // if search term is a string
+    searchResultsContainer.innerHTML = '';
+
     fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
       .then(response => response.json())
       .then(data => {
@@ -26,9 +23,9 @@ const searchSpecificAnimal = function(searchFromInputValue) {
         data.animals.forEach(function(animal){
           // lower case and trim animal name
           animalNameRevised = animal.name.toLowerCase().trim();
-          // generate card if name makes search term
-          if(animalNameRevised === searchFormInputValueRevised) {
-            searchResultsContainer.innerHTML = generateCardTemplate([animal]);
+          // generate card if name is included in search term
+          if(animalNameRevised.includes(searchFormInputValueRevised)) {
+            searchResultsContainer.insertAdjacentHTML('beforeend', generateCardTemplate([animal]));
           }
         });
       })
@@ -44,7 +41,7 @@ searchFormSubmitBtn.addEventListener('click', function(e) {
 });
 
 
-//-- Filtered search --//
+// Search filter -- generic search
 const searchFilterSpeciesGroupWrap = searchFilter.querySelector('.search-filter--species-group');
 const searchFilterAgeGroupWrap = searchFilter.querySelector('.search-filter--age-group');
 const searchFilterSubmitBtn = searchFilter.querySelector('.search-filter__submit-container');
