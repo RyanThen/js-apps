@@ -37,6 +37,7 @@ const loadPaginationNext = (entries) => {
           });
         })
         .catch(err => console.log(err));
+        return;
     }
 
     // if there is an active filter search
