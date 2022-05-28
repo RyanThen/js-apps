@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pet Adoption App</title>
+
+  <link rel="stylesheet" href="css/pet-adopter.css">
+</head>
+<body>
+
+  <div class="full-page-container container">
+
+    <!-- Text search -->
+    <form class="search-form" id="search-form">
+      <div class="search-form__search-container">
+        <label for="searchInput">Search for a pet by Name or ID: </label>
+        <input type="text" name="searchInput" id="main-search" autofocus>
+      </div>
+      <div class="search-form__submit-container">
+        <input class="form-btn" type="submit" value="Search!">
+      </div>
+    </form>
+
+    <!-- Radio button search -->
+    <form class="search-filter" id="search-filter">
+      <div class="search-filter__radio-group-container search-filter--species-group">
+        <p class="search-filter__radio-group-title">Choose species:</p>
+        <input type="radio" id="species-dog" name="species" value="Dog">
+        <label for="species-dog">Dog</label>
+        <input type="radio" id="species-cat" name="species" value="Cat">
+        <label for="species-cat">Cat</label>
+        <input type="radio" id="species-np" name="species" value="No Preference">
+        <label for="species-np">No Preference</label>
+      </div>
+      <div class="search-filter__radio-group-container search-filter--age-group">
+        <p class="search-filter__radio-group-title">Choose age:</p>
+        <input type="radio" id="age-baby" name="age" value="Baby">
+        <label for="age-baby">Baby</label>
+        <input type="radio" id="age-adult" name="age" value="Adult">
+        <label for="age-adult">Adult</label>
+        <input type="radio" id="age-np" name="age" value="No Preference">
+        <label for="age-np">No Preference</label>
+      </div>
+      <div class="search-filter__submit-container">
+        <input class="form-btn" type="submit" value="Search!">
+      </div>
+    </form>
+
+    <div class="search-results-container"></div>
+
+    <div class="random-cat-fact-container"></div>
+
+    <div id="page-bottom" style="height: 500px;"></div>
+
+  </div> <!-- /  End .full-page-container  / -->
+
+
+  <!-- JavaScript -->
+  <script src="js/global.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/petAdopter.js"></script>
+</body>
+</html>
