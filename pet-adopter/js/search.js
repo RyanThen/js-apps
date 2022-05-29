@@ -6,11 +6,14 @@ const searchSpecificAnimal = function(searchFromInputValue) {
       .then(response => response.json())
       .then(data => { 
         // replace search results container content with new animal 
-        searchResultsContainer.innerHTML = generateCardTemplate([data.animal]);
+        searchResultsContainer.innerHTML = generateCardTemplate([data.animal]) ;
       })
-      .catch(err => console.log(err));
-  } else {
-    // if search term is a string
+      .catch(() => searchResultsContainer.innerHTML = '<p>No search results found, please try again.<p>');
+  }
+
+  // if search term is a string
+  if(typeof searchFromInputValue === 'string') {
+    // clear search results container
     searchResultsContainer.innerHTML = '';
 
     fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
@@ -30,7 +33,7 @@ const searchSpecificAnimal = function(searchFromInputValue) {
         });
       })
       .catch(err => console.log(err));
-  }  // end else
+  }
 
 }
 

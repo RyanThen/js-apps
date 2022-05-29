@@ -9,15 +9,10 @@ fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bear
   })
   .catch(err => console.log(err));
 
-// Infinite scroll when user reaches the bottom of page
+// Load pagination -- loadPaginationNext() determines if there is an active search and loads results accordingly
 let pagination = 2;
 
-const loadPaginationNext = (entries) => {
-  entries.forEach(entry => {
-    console.log(entry);
-    // only fire when scrolling down
-    if(!entry.isIntersecting) { pagination--; return; }
-
+const loadPaginationNext = () => {
     // if there is an active specific search
     if(searchFormInput.value) {
       fetch('https://api.petfinder.com/v2/animals?page=' + pagination, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
@@ -37,12 +32,14 @@ const loadPaginationNext = (entries) => {
           });
         })
         .catch(err => console.log(err));
+        pagination++;
         return;
     }
 
     // if there is an active filter search
     if(speciesSearchFilter) {
       filteredAnimalSearch('https://api.petfinder.com/v2/animals?page=' + pagination);
+      pagination++;
       return;
     } 
     
@@ -53,13 +50,12 @@ const loadPaginationNext = (entries) => {
         .then(data => {
           // populate another batch of animals cards to the end of container
           searchResultsContainer.insertAdjacentHTML('beforeend', generateCardTemplate(data.animals));
+          pagination++;
           return;
         })
         .catch(err => console.log(err));
     }
-  });
-
-  pagination++;
+    pagination++;
 };
 
 const options = {
@@ -68,13 +64,23 @@ const options = {
   threshold: 0.5
 }
 
-// Initialize intersection observer for infinite scroll (inside setTimeout to avoid firing on page load)
+// Infinite scroll when user reaches the bottom of page (inside setTimeout to avoid firing on page load)
 setTimeout(function(){
-  const observer = new IntersectionObserver(loadPaginationNext, options);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // only fire when scrolling down
+      if(!entry.isIntersecting) return;
+      loadPaginationNext(); 
+    });
+  }, options);
 
   const target = document.querySelector('#page-bottom');
   observer.observe(target);
-}, 2000)
+}, 1500)
+
+// Load more results button
+const loadMorePaginationBtn = document.querySelector('#load-more-pagination');
+loadMorePaginationBtn.addEventListener('click', loadPaginationNext);
 
 
 // // Random Cat Fact API Call
