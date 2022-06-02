@@ -41,6 +41,7 @@ const searchSpecificAnimal = function(searchFromInputValue) {
 searchFormSubmitBtn.addEventListener('click', function(e) {
   e.preventDefault();
   searchSpecificAnimal(searchFormInput.value);
+  pagination = 2;
 });
 
 
@@ -63,4 +64,5 @@ searchFilterSubmitBtn.addEventListener('click', function(e){
   searchResultsContainer.innerHTML = '';
 
   filteredAnimalSearch('https://api.petfinder.com/v2/animals/');
+  pagination = 2;
 });

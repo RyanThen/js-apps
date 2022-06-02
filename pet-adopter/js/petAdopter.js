@@ -1,4 +1,4 @@
-// Display all animals on page load
+// Display animals on page load
 fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
   .then(response => response.json())
   .then(data => {
@@ -9,62 +9,14 @@ fetch('https://api.petfinder.com/v2/animals/', { headers: { Authorization: `Bear
   })
   .catch(err => console.log(err));
 
-// Load pagination -- loadPaginationNext() determines if there is an active search and loads results accordingly
-let pagination = 2;
-
-const loadPaginationNext = () => {
-    // if there is an active specific search
-    if(searchFormInput.value) {
-      fetch('https://api.petfinder.com/v2/animals?page=' + pagination, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
-        .then(response => response.json())
-        .then(data => {
-          // revise strings in order to compare for conditional check
-          let searchFormInputValueRevised = searchFormInput.value.toLowerCase().trim();
-          let animalNameRevised;
-          
-          data.animals.forEach(function(animal){
-            // lower case and trim animal name
-            animalNameRevised = animal.name.toLowerCase().trim();
-            // generate card if name is included in search term
-            if(animalNameRevised.includes(searchFormInputValueRevised)) {
-              searchResultsContainer.insertAdjacentHTML('beforeend', generateCardTemplate([animal]));
-            }
-          });
-        })
-        .catch(err => console.log(err));
-        pagination++;
-        return;
-    }
-
-    // if there is an active filter search
-    if(speciesSearchFilter) {
-      filteredAnimalSearch('https://api.petfinder.com/v2/animals?page=' + pagination);
-      pagination++;
-      return;
-    } 
-    
-    // if no active searches, load general animal cards
-    if(!speciesSearchFilter && !searchFormInput.value) {
-      fetch('https://api.petfinder.com/v2/animals?page=' + pagination, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
-        .then(response => response.json())
-        .then(data => {
-          // populate another batch of animals cards to the end of container
-          searchResultsContainer.insertAdjacentHTML('beforeend', generateCardTemplate(data.animals));
-          pagination++;
-          return;
-        })
-        .catch(err => console.log(err));
-    }
-    pagination++;
-};
-
+// Intersection observer for infinite scroll when user reaches the bottom of page
 const options = {
   root: null,
   rootMargin: '0px',
   threshold: 0.5
 }
 
-// Infinite scroll when user reaches the bottom of page (inside setTimeout to avoid firing on page load)
+// create intersection observer (inside setTimeout to avoid firing on page load)
 setTimeout(function(){
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -80,7 +32,17 @@ setTimeout(function(){
 
 // Load more results button
 const loadMorePaginationBtn = document.querySelector('#load-more-pagination');
-loadMorePaginationBtn.addEventListener('click', loadPaginationNext);
+const searchLoadingContainer = document.querySelector('.search-loading-container');
+
+loadMorePaginationBtn.addEventListener('click', () => {
+  searchLoadingContainer.innerHTML = 'Searching next 80 entries that meets your criteria';
+  // search through more than one api call (each call only provides 20 animals)
+  for(let i = 0; i < 4; i++) {
+    loadPaginationNext();
+  }
+  setTimeout(() => searchLoadingContainer.innerHTML = '', 2000)
+  
+});
 
 
 // // Random Cat Fact API Call
