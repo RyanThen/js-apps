@@ -82,3 +82,57 @@ const filteredAnimalSearch = function(url) {
       generateFilteredCards(speciesSearchFilter, ageSearchFilter);
     })
 }
+
+
+// Load pagination -- loadPaginationNext() determines if there is an active search and loads results accordingly
+let pagination = 2;
+
+const loadPaginationNext = () => {
+    // if there is an active specific search
+    if(searchFormInput.value) {
+      fetch('https://api.petfinder.com/v2/animals?page=' + pagination, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
+        .then(response => response.json())
+        .then(data => {
+          // revise strings in order to compare for conditional check
+          let searchFormInputValueRevised = searchFormInput.value.toLowerCase().trim();
+          let animalNameRevised;
+          
+          data.animals.forEach(function(animal){
+            // lower case and trim animal name
+            animalNameRevised = animal.name.toLowerCase().trim();
+            // generate card if name is included in search term
+            if(animalNameRevised.includes(searchFormInputValueRevised)) {
+              searchResultsContainer.insertAdjacentHTML('beforeend', generateCardTemplate([animal]));
+            }
+          });
+        })
+        .catch(err => console.log(err));
+        pagination++;
+        console.log(pagination);
+        return;
+    }
+
+    // if there is an active filter search
+    if(speciesSearchFilter) {
+      filteredAnimalSearch('https://api.petfinder.com/v2/animals?page=' + pagination);
+      pagination++;
+      console.log(pagination);
+      return;
+    } 
+    
+    // if no active searches, load general animal cards
+    if(!speciesSearchFilter && !searchFormInput.value) {
+      fetch('https://api.petfinder.com/v2/animals?page=' + pagination, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
+        .then(response => response.json())
+        .then(data => {
+          // populate another batch of animals cards to the end of container
+          searchResultsContainer.insertAdjacentHTML('beforeend', generateCardTemplate(data.animals));
+          pagination++;
+          console.log(pagination);
+          return;
+        })
+        .catch(err => console.log(err));
+    }
+    pagination++;
+    console.log(pagination);
+};
