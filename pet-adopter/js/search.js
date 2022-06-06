@@ -1,3 +1,29 @@
+// Search options button functionality
+const allForms = document.forms;
+const searchMethodContainer = document.querySelector('.search-method-container');
+const searchMethodSingleContainers = document.querySelectorAll('.search-method-single-container p');
+
+searchMethodContainer.addEventListener('click', function(e) {
+  [allForms].forEach((el, index) => allForms[index].classList.remove('search-form-show'));
+
+
+  searchMethodSingleContainers.forEach(function(el, i) {
+    if(e.target === el) el.closest('.search-method-single-container').classList.add('search-form-show');
+  })
+
+  // for(let i = 0; i < allForms.length; i++) { 
+  //   console.log(e.target, searchMethodSingleContainers[i]);
+  //   if(e.target === searchMethodSingleContainers[i]) {
+  //     allForms[i].classList.add('search-form-show');
+  //   }
+  // }
+
+  // ******* This one works but is not dynamic ********* //
+  // if(e.target === searchMethodSingleContainers[0]) allForms[0].classList.add('search-form-show');
+  // if(e.target === searchMethodSingleContainers[1]) allForms[1].classList.add('search-form-show');
+})
+
+
 // Search form - specific search
 const searchSpecificAnimal = function(searchFromInputValue) {
   // if search term is a number
