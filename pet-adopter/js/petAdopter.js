@@ -22,7 +22,7 @@ setTimeout(function(){
     entries.forEach(entry => {
       // only fire when scrolling down
       if(!entry.isIntersecting) return;
-      loadPaginationNext(); 
+      loadPaginationNext('beforeend'); 
     });
   }, options);
 

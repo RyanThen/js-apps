@@ -1,4 +1,4 @@
-// Variables
+//-- Variables --//
 const randomCatFactContainer = document.querySelector('.random-cat-fact-container');
 const searchResultsContainer = document.querySelector('.search-results-container');
 
@@ -10,7 +10,9 @@ const searchFilter = document.forms['search-filter'];
 let speciesSearchFilter;
 let ageSearchFilter;
 
-// Functions
+//-- Functions --//
+
+// Generate generic card template
 const generateCardTemplate = function(array) {
 
   let cardTemplate = '';
@@ -52,7 +54,7 @@ const generateCardTemplate = function(array) {
   return cardTemplate;
 }
 
-
+// Perform filtered search depending on user search criteria
 const filteredAnimalSearch = function(url) {
   // get radio button values
   speciesSearchFilter = searchFilter['species'].value;
@@ -87,7 +89,7 @@ const filteredAnimalSearch = function(url) {
 // Load pagination -- loadPaginationNext() determines if there is an active search and loads results accordingly
 let pagination = 2;
 
-const loadPaginationNext = () => {
+const loadPaginationNext = (placement = 'afterbegin') => {
     // if there is an active specific search
     if(searchFormInput.value) {
       fetch('https://api.petfinder.com/v2/animals?page=' + pagination, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
@@ -102,7 +104,7 @@ const loadPaginationNext = () => {
             animalNameRevised = animal.name.toLowerCase().trim();
             // generate card if name is included in search term
             if(animalNameRevised.includes(searchFormInputValueRevised)) {
-              searchResultsContainer.insertAdjacentHTML('beforeend', generateCardTemplate([animal]));
+              searchResultsContainer.insertAdjacentHTML(placement, generateCardTemplate([animal]));
             }
           });
         })
@@ -126,7 +128,7 @@ const loadPaginationNext = () => {
         .then(response => response.json())
         .then(data => {
           // populate another batch of animals cards to the end of container
-          searchResultsContainer.insertAdjacentHTML('beforeend', generateCardTemplate(data.animals));
+          searchResultsContainer.insertAdjacentHTML(placement, generateCardTemplate(data.animals));
           pagination++;
           console.log(pagination);
           return;

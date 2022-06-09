@@ -14,58 +14,61 @@
   <div class="full-page-container container">
 
     <div class="search-method-container">
-      <div class="search-method-single-container search-method-1">
-        <p>Search by animal name or ID</p>
+      <div class="search-method-single-container">
+        <p class="search-method search-method-1">Search by animal name or ID</p>
       </div>
-      <div class="search-method-single-container search-method-2">
-        <p>Filter animals by specific criteria</p>
+      <div class="search-method-single-container">
+        <p class="search-method search-method-2">Filter animals by specific criteria</p>
       </div>
     </div>
 
-    <!-- Text search -->
-    <form class="search-form" id="search-form">
-      <div class="search-form__search-container">
-        <label for="searchInput">Search for a pet by Name or ID: </label>
-        <input type="text" name="searchInput" id="main-search" autofocus>
-      </div>
-      <div class="search-form__submit-container">
-        <input class="form-btn" type="submit" value="Search!">
-      </div>
-    </form>
+    <div class="forms-container">
+      <!-- Text search -->
+      <form class="search-form" id="search-form">
+        <div class="search-form__search-container">
+          <label for="searchInput">Search for a pet by Name or ID: </label>
+          <input type="text" name="searchInput" id="main-search" autofocus>
+        </div>
+        <div class="search-form__submit-container">
+          <input class="form-btn" type="submit" value="Search!">
+        </div>
+      </form>
 
-    <!-- Radio button search -->
-    <form class="search-filter" id="search-filter">
-      <div class="search-filter__radio-group-container search-filter--species-group">
-        <p class="search-filter__radio-group-title">Choose species:</p>
-        <input type="radio" id="species-dog" name="species" value="Dog">
-        <label for="species-dog">Dog</label>
-        <input type="radio" id="species-cat" name="species" value="Cat">
-        <label for="species-cat">Cat</label>
-        <input type="radio" id="species-np" name="species" value="No Preference">
-        <label for="species-np">No Preference</label>
-      </div>
-      <div class="search-filter__radio-group-container search-filter--age-group">
-        <p class="search-filter__radio-group-title">Choose age:</p>
-        <input type="radio" id="age-baby" name="age" value="Baby">
-        <label for="age-baby">Baby</label>
-        <input type="radio" id="age-adult" name="age" value="Adult">
-        <label for="age-adult">Adult</label>
-        <input type="radio" id="age-np" name="age" value="No Preference">
-        <label for="age-np">No Preference</label>
-      </div>
-      <div class="search-filter__submit-container">
-        <input class="form-btn" type="submit" value="Search!">
-      </div>
-    </form>
+      <!-- Radio button search -->
+      <form class="search-filter" id="search-filter">
+        <div class="search-filter__radio-group-container search-filter--species-group">
+          <p class="search-filter__radio-group-title">Choose species:</p>
+          <input type="radio" id="species-dog" name="species" value="Dog">
+          <label for="species-dog">Dog</label>
+          <input type="radio" id="species-cat" name="species" value="Cat">
+          <label for="species-cat">Cat</label>
+          <input type="radio" id="species-np" name="species" value="No Preference">
+          <label for="species-np">No Preference</label>
+        </div>
+        <div class="search-filter__radio-group-container search-filter--age-group">
+          <p class="search-filter__radio-group-title">Choose age:</p>
+          <input type="radio" id="age-baby" name="age" value="Baby">
+          <label for="age-baby">Baby</label>
+          <input type="radio" id="age-adult" name="age" value="Adult">
+          <label for="age-adult">Adult</label>
+          <input type="radio" id="age-np" name="age" value="No Preference">
+          <label for="age-np">No Preference</label>
+        </div>
+        <div class="search-filter__submit-container">
+          <input class="form-btn" type="submit" value="Search!">
+        </div>
+      </form>
+    </div>  <!-- .forms-container -->
 
-    <div class="search-loading-container">HEY</div>
+    <div class="search-loading-container"></div>
+
+    <div class="btn-container load-more-btn">
+      <button id="load-more-pagination" class="btn">Load more results</button>
+    </div>
+
     <div class="search-results-container"></div>
 
     <div class="random-cat-fact-container"></div>
-
-    <div class="btn-container">
-      <button id="load-more-pagination" class="btn">Load more results</button>
-    </div>
 
     <div id="page-bottom" style="height: 1000px;"></div>
 
