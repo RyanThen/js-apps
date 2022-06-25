@@ -12,8 +12,6 @@ searchMethodContainer.addEventListener('click', function(e) {
   searchMethods.forEach(function(el, i) {
     if(e.target === el) allForms[i].classList.add('search-form-show');
   })
-
-  loadMoreBtn.classList.add('search-form-show');
 })
 
 // Search form - specific search

@@ -19,8 +19,6 @@ p { margin: 15px 0; }
 .form-btn { font-size: 16px; padding: 5px 10px; color: var(--main-text-color); background-color: var(--light-bg-neutral); border-radius: 5px; cursor: pointer; transition: 300ms; }
 .form-btn:hover { background-color: lightgrey; transition: 300ms; }
 
-.secondary-cta { color: var(--highlight-color); cursor: pointer; }
-
 /* Search method options */
 .search-method-container { display: flex; }
 .search-method-single-container { max-width: 175px; margin-right: 15px; text-align: center; border-radius: 10px; cursor: pointer; }
@@ -30,7 +28,8 @@ p { margin: 15px 0; }
 
 .search-form-show { display: block !important; }
 
-.load-more-btn { display: none; }
+.learn-more-selector-container { margin: 25px 0 20px 0; }
+
 .load-more-btn button { padding: 5px 10px; background-color: #F0F0F0; }
 
 /* Search form */

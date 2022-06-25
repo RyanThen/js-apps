@@ -22,24 +22,6 @@
       </div>
     </div>
 
-    <!-- Learn more selector container -->
-    <div class="learn-more-selector-container">
-      <label for="learn-more-select">Learn breed specifics</label>
-      <select name="learn-more-select" id="learn-more-select">
-        <!-- ##############################################################
-        NEED TO GENERATE THIS LIST DYNAMICALLY WITH JAVASCRIPT AND API CALL
-        ############################################################### -->
-        <option value="">--Please choose an option--</option>
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="hamster">Hamster</option>
-        <option value="parrot">Parrot</option>
-        <option value="spider">Spider</option>
-        <option value="goldfish">Goldfish</option>
-      </select>
-    </div>
-    
-
     <div class="forms-container">
       <!-- Text search -->
       <form class="search-form" id="search-form">
@@ -78,26 +60,36 @@
       </form>
     </div>  <!-- .forms-container -->
 
+    <!-- Learn more selector container -->
+    <div class="learn-more-selector-container">
+      <form>
+        <label for="learn-more-select">Learn breed specifics</label>
+        <select name="learn-more-select" id="learn-more-select">
+          <option value="choose">--Please choose an option--</option>
+        </select>
+      </form>
+    </div>
+
     <div class="search-loading-container"></div>
+
+    <div class="learn-more-container"></div>
 
     <div class="btn-container load-more-btn">
       <button id="load-more-pagination" class="btn">Load more results</button>
     </div>
 
-    <div class="learn-more-container"></div>
-
     <div class="search-results-container"></div>
 
     <div class="random-cat-fact-container"></div>
 
-    <div id="page-bottom" style="height: 1000px;"></div>
+    <div id="page-bottom" style="height: 800px;"></div>
 
   </div> <!-- /  End .full-page-container  / -->
 
 
   <!-- JavaScript -->
-  <script src="js/global.js"></script>
   <script src="js/api.js"></script>
+  <script src="js/global.js"></script>
   <script src="js/search.js"></script>
   <script src="js/petAdopter.js"></script>
   <script src="js/animalFacts.js"></script>
