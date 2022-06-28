@@ -11,55 +11,89 @@
 </head>
 <body>
 
-  <div class="full-page-container container">
-
-    <div class="search-method-container">
-      <div class="search-method-single-container">
-        <p class="search-method search-method-1">Search by animal name or ID</p>
+  <header>
+    <nav class="navigation">
+      <div class="nav-content-container container">
+        <div class="logo-container">
+          <p>Pet Adopter</p>
+        </div>
+        <div class="nav-items-container">
+          <ul class="nav-items-list">
+            <li>Adopt A Pet</li>
+          </ul>
+        </div>
       </div>
-      <div class="search-method-single-container">
-        <p class="search-method search-method-2">Filter animals by specific criteria</p>
+    </nav>
+  </header>
+
+  <div class="hero-container">
+    <div class="hero-content-container container">
+
+      <div class="hero-search-callout">
+
+        <div class="hero-search-container">
+          <div class="search-method-container">
+            <div class="search-method-single-container">
+              <p class="search-method search-method-1">Search by animal name or ID</p>
+            </div>
+            <div class="search-method-single-container">
+              <p class="search-method search-method-2">Filter animals by specific criteria</p>
+            </div>
+          </div>
+    
+          <div class="forms-container">
+            <!-- Text search -->
+            <form class="search-form" id="search-form">
+              <div class="search-form__search-container">
+                <label for="searchInput">Search for a pet by Name or ID: </label>
+                <input type="text" name="searchInput" id="main-search" autofocus>
+              </div>
+              <div class="search-form__submit-container">
+                <input class="form-btn" type="submit" value="Search!">
+              </div>
+            </form>
+      
+            <!-- Radio button search -->
+            <form class="search-filter" id="search-filter">
+              <div class="search-filter__radio-group-container search-filter--species-group">
+                <p class="search-filter__radio-group-title">Choose species:</p>
+                <input type="radio" id="species-dog" name="species" value="Dog">
+                <label for="species-dog">Dog</label>
+                <input type="radio" id="species-cat" name="species" value="Cat">
+                <label for="species-cat">Cat</label>
+                <input type="radio" id="species-np" name="species" value="No Preference">
+                <label for="species-np">No Preference</label>
+              </div>
+              <div class="search-filter__radio-group-container search-filter--age-group">
+                <p class="search-filter__radio-group-title">Choose age:</p>
+                <input type="radio" id="age-baby" name="age" value="Baby">
+                <label for="age-baby">Baby</label>
+                <input type="radio" id="age-adult" name="age" value="Adult">
+                <label for="age-adult">Adult</label>
+                <input type="radio" id="age-np" name="age" value="No Preference">
+                <label for="age-np">No Preference</label>
+              </div>
+              <div class="search-filter__submit-container">
+                <input class="form-btn" type="submit" value="Search!">
+              </div>
+            </form>
+          </div>  <!-- .forms-container -->
+        </div>  <!-- .hero-search-container -->
+
       </div>
-    </div>
+  
+      <div class="hero-factoid-container">
+        <div class="hero-factoid-content">
+          <h3 class="factoid-headline">Animal Factoid</h3>
+          <p class="factoid">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+      </div>  <!-- .hero-factoid-container -->
 
-    <div class="forms-container">
-      <!-- Text search -->
-      <form class="search-form" id="search-form">
-        <div class="search-form__search-container">
-          <label for="searchInput">Search for a pet by Name or ID: </label>
-          <input type="text" name="searchInput" id="main-search" autofocus>
-        </div>
-        <div class="search-form__submit-container">
-          <input class="form-btn" type="submit" value="Search!">
-        </div>
-      </form>
+    </div>  <!-- .hero-content-container -->
+  </div>  <!-- .hero-container -->
 
-      <!-- Radio button search -->
-      <form class="search-filter" id="search-filter">
-        <div class="search-filter__radio-group-container search-filter--species-group">
-          <p class="search-filter__radio-group-title">Choose species:</p>
-          <input type="radio" id="species-dog" name="species" value="Dog">
-          <label for="species-dog">Dog</label>
-          <input type="radio" id="species-cat" name="species" value="Cat">
-          <label for="species-cat">Cat</label>
-          <input type="radio" id="species-np" name="species" value="No Preference">
-          <label for="species-np">No Preference</label>
-        </div>
-        <div class="search-filter__radio-group-container search-filter--age-group">
-          <p class="search-filter__radio-group-title">Choose age:</p>
-          <input type="radio" id="age-baby" name="age" value="Baby">
-          <label for="age-baby">Baby</label>
-          <input type="radio" id="age-adult" name="age" value="Adult">
-          <label for="age-adult">Adult</label>
-          <input type="radio" id="age-np" name="age" value="No Preference">
-          <label for="age-np">No Preference</label>
-        </div>
-        <div class="search-filter__submit-container">
-          <input class="form-btn" type="submit" value="Search!">
-        </div>
-      </form>
-    </div>  <!-- .forms-container -->
 
+  <div class="content-container container">
     <!-- Learn more selector container (list generated from JS) -->
     <div class="learn-more-selector-container">
       <form>
