@@ -1,5 +1,5 @@
 //-- Variables --//
-const randomCatFactContainer = document.querySelector('.random-cat-fact-container');
+// const randomCatFactContainer = document.querySelector('.random-cat-fact-container');
 const searchResultsContainer = document.querySelector('.search-results-container');
 
 const searchForm = document.querySelector('.search-form');

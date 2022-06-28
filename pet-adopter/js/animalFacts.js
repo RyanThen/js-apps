@@ -39,7 +39,7 @@ learnMoreSelector.addEventListener('change', function() {
       const breedimageID = data[0].reference_image_id;
       fetch(`https://api.thedogapi.com/v1/images/${breedimageID}`, { headers: { "x-api-key": theDogApiKey } })
         .then(response => response.json())
-        .then(data => console.log(data.url))
+        .then(data => console.log(data, data.url))
         .catch(err => alert(err));
 
       // ################################################### //
@@ -55,7 +55,9 @@ learnMoreSelector.addEventListener('change', function() {
 
 
 // Random Cat Fact API Call (Meow Facts)
-// fetch('https://meowfacts.herokuapp.com/')
-//   .then(response => response.json())
-//   .then(({data}) => randomCatFactContainer.insertAdjacentHTML('afterbegin', 'Cat Factoid: ' + data))
-//   .catch(err => alert(err));
+const factoid = document.querySelector('.factoid');
+
+fetch('https://meowfacts.herokuapp.com/')
+  .then(response => response.json())
+  .then(({data}) => factoid.innerHTML = 'Cat Factoid: ' + data)
+  .catch(err => alert(err));
