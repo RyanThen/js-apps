@@ -18,14 +18,20 @@
 p { margin: 15px 0; }
 .container { width: 100%; max-width: 1325px; margin: 0 auto; padding: 15px; }
 
+.full-page-container { position: relative; width: 100%; }
+
 .form-btn { font-size: 16px; padding: 5px 10px; color: var(--main-text-color); background-color: var(--light-bg-neutral); border-radius: 5px; cursor: pointer; transition: 300ms; }
 .form-btn:hover { background-color: lightgrey; transition: 300ms; }
 
-.fixed-btn--right { position: fixed; top: 45vh; right: -20px; padding: 5px 15px; transform: rotate(270deg); transform-origin: top center; z-index: 99; background: red; border-radius: 10px 10px 0 0; cursor: pointer; }
+.fixed-btn--right { position: fixed; top: 45vh; right: -20px; padding: 5px 15px; transform: rotate(270deg); transform-origin: top center; z-index: 99; background: red; border-radius: var(--border-radius) var(--border-radius) 0 0; cursor: pointer; }
 .fixed-btn--right:hover { background-color: green; transition: 300ms; }
-.learn-more-selector-container { position: fixed; top: 45vh; right: -100%; margin: 25px 0 20px 0; transition: 500ms; }
 
-.full-page-container { position: relative; width: 100%; }
+/* Slideout */
+.slideout-container { position: fixed; top: 20vh; right: -100%; width: 90%; min-height: 300px; margin: 25px 0 20px 0; padding: 30px; background: lightblue; transition: 500ms; }
+.close { color: var(--highlight-color); text-decoration: underline; cursor: pointer; }
+
+.animal-fact-card-container { display: flex; margin: 20px 0 0 0; }
+.animal-fact-img { max-width: 300px; margin-right: 15px; }
 
 /* Navigation */
 .navigation { border-bottom: 1px solid lightgrey; }
@@ -40,8 +46,6 @@ p { margin: 15px 0; }
 
 .hero-search-callout { flex: 1; display: flex; }
 .hero-search-container { height: fit-content; padding: 25px; background-color: white; }
-/* .search-method-container {  }
-.forms-container {  } */
 
 /* Search method options */
 .search-method-container { display: flex; }
@@ -84,7 +88,14 @@ p { margin: 15px 0; }
 .card__trailing-content-headline { margin-bottom: 4px; text-decoration: underline; }
 .card__trailing-content-text { margin: 2px 0; }
 
+/* Desktop */
+@media(min-width: 1025px) {
+  
+}
+
 /* Mobile */
 @media(max-width: 650px) {
   .card { margin: 10px 0; }
+  .animal-fact-card-container { flex-direction: column; margin: 10px 0 20px 0; }
+  .animal-fact-img { margin-right: 0; }
 }
