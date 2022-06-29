@@ -1,4 +1,3 @@
-const learnMoreSelectorContainer = document.querySelector('.learn-more-selector-container');
 const learnMoreSelector = document.querySelector('#learn-more-select');
 const learnMoreContainer = document.querySelector('.learn-more-container');
 
@@ -61,3 +60,14 @@ fetch('https://meowfacts.herokuapp.com/')
   .then(response => response.json())
   .then(({data}) => factoid.innerHTML = 'Cat Factoid: ' + data)
   .catch(err => alert(err));
+
+
+
+
+const learnMoreSelectorContainer = document.querySelector('.learn-more-selector-container');
+const fixedBtnRight = document.querySelector('.fixed-btn--right');
+
+fixedBtnRight.addEventListener('click', () => {
+  learnMoreSelectorContainer.setAttribute('style', 'right: 0');
+})
+  
