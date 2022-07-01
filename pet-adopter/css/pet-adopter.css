@@ -27,7 +27,7 @@ p { margin: 15px 0; }
 .fixed-btn--right:hover { background-color: green; transition: 300ms; }
 
 /* Slideout */
-.slideout-container { position: fixed; top: 20vh; right: -100%; width: 90%; min-height: 300px; margin: 25px 0 20px 0; padding: 30px; background: lightblue; transition: 500ms; }
+.slideout-container { position: fixed; top: 10vh; right: -100%; width: 90%; max-width: 1100px; min-height: 300px; max-height: 500px; overflow-y: scroll; margin: 25px 0 20px 0; padding: 30px; background: lightblue; transition: 500ms; }
 .close { color: var(--highlight-color); text-decoration: underline; cursor: pointer; }
 
 .animal-fact-card-container { display: flex; margin: 20px 0 0 0; }
@@ -58,7 +58,9 @@ p { margin: 15px 0; }
 
 .hero-factoid-container { flex: 1; }
 .hero-factoid-content { max-width: 500px; }
+.factoid-header { display: flex; justify-content: space-between; align-items: flex-start; }
 .factoid-headline { color: white; }
+.factoid-refresh { margin: 0; color: var(--highlight-color); text-decoration: underline; cursor: pointer; }
 .factoid { color: white; }
 
 .load-more-btn button { padding: 5px 10px; background-color: #F0F0F0; }
