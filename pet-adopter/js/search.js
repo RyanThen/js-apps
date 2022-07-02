@@ -1,13 +1,12 @@
 // Search options button functionality
-const allForms = document.querySelectorAll('.forms-container form');
 const searchMethodContainer = document.querySelector('.search-method-container');
 const searchMethods = document.querySelectorAll('.search-method');
-const loadMoreBtn = document.querySelector('.load-more-btn');
+const loadMoreBtn = document.querySelector('.load-more-btn button');
 
 searchMethodContainer.addEventListener('click', function(e) {
+  resetSearch();
   // hide all forms
   allForms.forEach((el, index) => allForms[index].classList.remove('search-form-show'));
-
   // show selected form
   searchMethods.forEach(function(el, i) {
     if(e.target === el) allForms[i].classList.add('search-form-show');
@@ -58,6 +57,7 @@ searchFormSubmitBtn.addEventListener('click', function(e) {
   e.preventDefault();
   searchSpecificAnimal(searchFormInput.value);
   pagination = 2;
+  loadMoreBtn.textContent = 'Load more animal name/ID search results';
 });
 
 
@@ -79,6 +79,8 @@ searchFilterSubmitBtn.addEventListener('click', function(e){
   // clear search results container
   searchResultsContainer.innerHTML = '';
 
+  loadMoreBtn.textContent = 'Load more filtered animal search results';
+
   filteredAnimalSearch('https://api.petfinder.com/v2/animals/');
   pagination = 2;
 });
@@ -87,15 +89,16 @@ searchFilterSubmitBtn.addEventListener('click', function(e){
 // Clear button
 const searchMethodClear = document.querySelector('.search-method-clear');
 
-// clear search results container and populate with generic search
 searchMethodClear.addEventListener('click', function() {
+  // clear search results container and populate with generic search
   fetch('https://api.petfinder.com/v2/animals', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
     .then(response => response.json())
     .then(data => {
-      // populate another batch of animals cards to the end of container
       searchResultsContainer.innerHTML = generateCardTemplate(data.animals);
     })
     .catch(err => console.log(err));
+
+    resetSearch();
 })
 
 /* #######################################################

@@ -1,15 +1,25 @@
 //-- Variables --//
-const searchResultsContainer = document.querySelector('.search-results-container');
-
-const searchForm = document.querySelector('.search-form');
+const allForms = document.querySelectorAll('.forms-container form');
+const searchFilter = document.querySelector('#search-filter');
+const searchFilterInputs = searchFilter.querySelectorAll('input')
+const searchForm = document.querySelector('#search-form');
 const searchFormInput = searchForm.querySelector('.search-form__search-container input');
 const searchFormSubmitBtn = searchForm.querySelector('.search-form__submit-container input');
 
-const searchFilter = document.forms['search-filter'];
+const searchResultsContainer = document.querySelector('.search-results-container');
+
 let speciesSearchFilter;
 let ageSearchFilter;
 
 //-- Functions --//
+
+const resetSearch = function() {
+  searchFilterInputs.forEach(el => el.checked = false);
+  speciesSearchFilter = '';
+  ageSearchFilter = '';
+  searchFormInput.value = '';
+  pagination = 2;
+}
 
 // Generate generic card template
 const generateCardTemplate = function(array) {
@@ -73,8 +83,11 @@ const filteredAnimalSearch = function(url) {
           // set search filter values for subsequent conditional checks
           species === 'No Preference' ? speciesSingle = animal.species : speciesSingle = species;
           age === 'No Preference' ? ageSingle = animal.age : ageSingle = age;
-          // build filted search template
+          // build filtered animal search template
           if(animal.species === speciesSingle && animal.age === ageSingle) filteredSearchTemplate += generateCardTemplate([animal]);      
+          // include animals defined as 'young' and 'senior' in search results
+          if (ageSingle === 'Baby' && animal.age === 'Young' && animal.species === speciesSingle) filteredSearchTemplate += generateCardTemplate([animal]);      
+          if (ageSingle === 'Adult' && animal.age === 'Senior' && animal.species === speciesSingle) filteredSearchTemplate += generateCardTemplate([animal]);      
         });
     
         searchResultsContainer.insertAdjacentHTML('afterbegin', filteredSearchTemplate);
