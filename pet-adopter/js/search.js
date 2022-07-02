@@ -82,3 +82,25 @@ searchFilterSubmitBtn.addEventListener('click', function(e){
   filteredAnimalSearch('https://api.petfinder.com/v2/animals/');
   pagination = 2;
 });
+
+
+// Clear button
+const searchMethodClear = document.querySelector('.search-method-clear');
+
+// clear search results container and populate with generic search
+searchMethodClear.addEventListener('click', function() {
+  fetch('https://api.petfinder.com/v2/animals', { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
+    .then(response => response.json())
+    .then(data => {
+      // populate another batch of animals cards to the end of container
+      searchResultsContainer.innerHTML = generateCardTemplate(data.animals);
+    })
+    .catch(err => console.log(err));
+})
+
+/* #######################################################
+##########################################################
+ CONTINUE WORKING THROUGH CLEARING SEARCH PARAMETERS AND
+    AND OTHER DATA WHEN USER CLICKS THE CLEAR BUTTON
+##########################################################
+####################################################### */
