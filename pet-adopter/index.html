@@ -42,20 +42,12 @@
               <div class="search-method-single-container">
                 <p class="search-method search-method-2">Filter animals by specific criteria</p>
               </div>
+              <div class="search-method-single-container">
+                <p class="search-method-clear">Clear</p>
+              </div>
             </div>
       
             <div class="forms-container">
-              <!-- Text search -->
-              <form class="search-form" id="search-form">
-                <div class="search-form__search-container">
-                  <label for="searchInput">Search for a pet by Name or ID: </label>
-                  <input type="text" name="searchInput" id="main-search" autofocus>
-                </div>
-                <div class="search-form__submit-container">
-                  <input class="form-btn" type="submit" value="Search!">
-                </div>
-              </form>
-        
               <!-- Radio button search -->
               <form class="search-filter" id="search-filter">
                 <div class="search-filter__radio-group-container search-filter--species-group">
@@ -80,6 +72,16 @@
                   <input class="form-btn" type="submit" value="Search!">
                 </div>
               </form>
+              <!-- Text search -->
+              <form class="search-form" id="search-form">
+                <div class="search-form__search-container">
+                  <label for="searchInput">Search for a pet by Name or ID: </label>
+                  <input type="text" name="searchInput" id="main-search" autofocus>
+                </div>
+                <div class="search-form__submit-container">
+                  <input class="form-btn" type="submit" value="Search!">
+                </div>
+              </form> <!-- .search-form -->
             </div>  <!-- .forms-container -->
           </div>  <!-- .hero-search-container -->
   
@@ -127,13 +129,13 @@
       </div>
       <form>
         <label for="learn-more-select-1">Dog Breeds</label>
-        <select name="learn-more-select-1" id="learn-more-select-1">
+        <select name="learn-more-select-1" class="learn-more-select" id="learn-more-select-1">
           <!-- <option> list generated from JS  -->
         </select>
       </form>
       <form>
         <label for="learn-more-select-2">Cat Breeds</label>
-          <select name="learn-more-select-2" id="learn-more-select-2">
+          <select name="learn-more-select-2" class="learn-more-select" id="learn-more-select-2">
             <!-- <option> list generated from JS  -->
           </select>
         </select>
