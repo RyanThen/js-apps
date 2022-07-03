@@ -19,8 +19,8 @@
         </div>
         <div class="nav-items-container">
           <ul class="nav-items-list">
-            <li><a href="#">Adopt A Pet</a></li>
-            <li><a href="#">Learn about breeds</a></li>
+            <li><a href="#search-results-container">Adopt A Pet</a></li>
+            <li><a id="nav-slideout-item" href="#">Learn about breeds</a></li>
           </ul>
         </div>
       </div>
@@ -103,17 +103,19 @@
   
     <div class="content-container container">
   
-      <div class="search-loading-container"></div>
+      
   
-      <div class="learn-more-container"></div>
+      <div id="learn-more-container" class="learn-more-container"></div>
   
       <div class="btn-container load-more-btn">
+        <p id="search-terms-confirmation" class="search-terms-confirmation"></p>
         <button id="load-more-pagination" class="btn">Load more results</button>
+        <span id="search-loading-container" class="search-loading-container"></span>
       </div>
   
-      <div class="search-results-container"></div>
+      <div id="search-results-container" class="search-results-container"></div>
   
-      <div id="page-bottom" style="height: 750px;"></div>
+      <div id="page-bottom"></div>
   
     </div> <!-- /  End .content-container  / -->
   
