@@ -6,18 +6,19 @@ const searchForm = document.querySelector('#search-form');
 const searchFormInput = searchForm.querySelector('.search-form__search-container input');
 const searchFormSubmitBtn = searchForm.querySelector('.search-form__submit-container input');
 
+const searchTermsConfirmation = document.querySelector('.search-terms-confirmation');
 const searchResultsContainer = document.querySelector('.search-results-container');
 
 let speciesSearchFilter;
 let ageSearchFilter;
 
-//-- Functions --//
 
 const resetSearch = function() {
   searchFilterInputs.forEach(el => el.checked = false);
   speciesSearchFilter = '';
   ageSearchFilter = '';
   searchFormInput.value = '';
+  searchTermsConfirmation.innerHTML = 'General search for all animals and ages';
   pagination = 2;
 }
 
@@ -64,7 +65,7 @@ const generateCardTemplate = function(array) {
 }
 
 // Perform filtered search depending on user search criteria
-const filteredAnimalSearch = function(url) {
+const filteredAnimalSearch = function(url, htmlLocation = 'beforeend') {
   // get radio button values
   speciesSearchFilter = searchFilter['species'].value;
   ageSearchFilter = searchFilter['age'].value;
@@ -90,7 +91,7 @@ const filteredAnimalSearch = function(url) {
           if (ageSingle === 'Adult' && animal.age === 'Senior' && animal.species === speciesSingle) filteredSearchTemplate += generateCardTemplate([animal]);      
         });
     
-        searchResultsContainer.insertAdjacentHTML('afterbegin', filteredSearchTemplate);
+        searchResultsContainer.insertAdjacentHTML(htmlLocation, filteredSearchTemplate);
       }
     
       generateFilteredCards(speciesSearchFilter, ageSearchFilter);
@@ -128,7 +129,7 @@ const loadPaginationNext = (placement = 'afterbegin') => {
 
     // if there is an active filter search
     if(speciesSearchFilter) {
-      filteredAnimalSearch('https://api.petfinder.com/v2/animals?page=' + pagination);
+      filteredAnimalSearch('https://api.petfinder.com/v2/animals?page=' + pagination, placement);
       pagination++;
       console.log(pagination);
       return;

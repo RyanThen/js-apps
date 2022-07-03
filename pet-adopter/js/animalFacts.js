@@ -116,14 +116,10 @@ const generateAnimalFactCard = function(animal = 'dog') {
     .catch(err => console.log(err));
 }
 
-// on animal dropdown selector change
-learnMoreSelector1.addEventListener('change', function() {
-  generateAnimalFactCard('dog');
-});
-
-learnMoreSelector2.addEventListener('change', function() {
-  generateAnimalFactCard('cat');
-});
+// on DOG dropdown selector change
+learnMoreSelector1.addEventListener('change', () => generateAnimalFactCard('dog'));
+// on CAT dropdown selector change
+learnMoreSelector2.addEventListener('change', () => generateAnimalFactCard('cat'));
 
 // Open-close functionality for slideout
 let isOpen = false;
@@ -144,6 +140,15 @@ fixedBtnRight.addEventListener('click', function() {
 })
 
 closeCTA.addEventListener('click', openCloseSlideout)
+
+// Nav slideout item
+const navSlideoutItem = document.querySelector('#nav-slideout-item');
+
+navSlideoutItem.addEventListener('click', function(e) {
+  e.preventDefault();
+  openCloseSlideout();
+  generateAnimalFactCard('dog');
+})
 
 
 // Random Cat Fact API Call (Meow Facts)

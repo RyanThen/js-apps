@@ -56,8 +56,8 @@ const searchSpecificAnimal = function(searchFromInputValue) {
 searchFormSubmitBtn.addEventListener('click', function(e) {
   e.preventDefault();
   searchSpecificAnimal(searchFormInput.value);
+  searchTermsConfirmation.innerHTML = `<p>Searching for animal name/id: ${searchFormInput.value}</p>`;
   pagination = 2;
-  loadMoreBtn.textContent = 'Load more animal name/ID search results';
 });
 
 
@@ -79,7 +79,7 @@ searchFilterSubmitBtn.addEventListener('click', function(e){
   // clear search results container
   searchResultsContainer.innerHTML = '';
 
-  loadMoreBtn.textContent = 'Load more filtered animal search results';
+  searchTermsConfirmation.innerHTML = `<p>Searching for ${ageSearchFilter} ${speciesSearchFilter}s</p>`;
 
   filteredAnimalSearch('https://api.petfinder.com/v2/animals/');
   pagination = 2;

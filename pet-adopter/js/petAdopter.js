@@ -22,7 +22,10 @@ setTimeout(function(){
     entries.forEach(entry => {
       // only fire when scrolling down
       if(!entry.isIntersecting) return;
-      loadPaginationNext('beforeend'); 
+
+      for(let i = 0; i < 4; i++) {
+        loadPaginationNext('beforeend');
+      }
     });
   }, options);
 
@@ -38,7 +41,7 @@ loadMorePaginationBtn.addEventListener('click', () => {
   searchLoadingContainer.innerHTML = 'Searching next 80 entries that meets your criteria';
   // search through more than one api call (each call only provides 20 animals)
   for(let i = 0; i < 4; i++) {
-    loadPaginationNext();
+    loadPaginationNext('afterbegin');
   }
   setTimeout(() => searchLoadingContainer.innerHTML = '', 2000)
   
