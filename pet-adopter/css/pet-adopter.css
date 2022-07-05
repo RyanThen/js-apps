@@ -6,12 +6,12 @@
 
   --border-radius: 10px;
 
-  --primary-color: red;
-  --secondary-color: blue;
-  --tertiary-color: green;
-  --highlight-color: maroon;
+  --primary-color: #66BFBF;
+  --secondary-color: #EAF6F6;
+  /* --tertiary-color: #EAF6F6; */
+  --highlight-color: #FF0063;
   --main-text-color: #333;
-  --light-bg-neutral: #E0E0E0;
+  --light-bg-neutral: #f0f0f0;
 }
 
 * { margin: 0; padding: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--main-text-color); box-sizing: border-box; }
@@ -35,7 +35,7 @@ p { margin: 15px 0; }
 .animal-fact-img { max-width: 300px; margin-right: 15px; }
 
 /* Navigation */
-.navigation { border-bottom: 1px solid lightgrey; }
+.navigation { background-color: var(--secondary-color); border-bottom: 1px solid lightgrey; }
 .nav-content-container { display: flex; justify-content: space-between; }
 .nav-items-list { display: flex; list-style-type: none; }
 .nav-items-list li { padding: 8px; }
@@ -51,8 +51,8 @@ p { margin: 15px 0; }
 /* Search method options */
 .search-method-container { display: flex; }
 .search-method-single-container { max-width: 175px; margin-right: 15px; text-align: center; border-radius: var(--border-radius); cursor: pointer; }
-.search-method-single-container:nth-of-type(1) { background-color: var(--secondary-color); }
-.search-method-single-container:nth-of-type(2) { background-color: var(--tertiary-color); }
+.search-method-single-container:nth-of-type(1) { background-color: var(--highlight-color); }
+.search-method-single-container:nth-of-type(2) { background-color: var(--highlight-color); }
 .search-method { margin: 0; padding: 10px 15px; color: white; }
 .search-method-clear { text-decoration: underline; cursor: pointer; }
 
@@ -65,7 +65,7 @@ p { margin: 15px 0; }
 .factoid-refresh { margin: 0; color: var(--highlight-color); text-decoration: underline; cursor: pointer; }
 .factoid { color: white; }
 
-.load-more-btn button { padding: 5px 10px; background-color: #F0F0F0; cursor: pointer; }
+.load-more-btn button { padding: 8px 15px; color: var(--main-text-color); background-color: var(--light-bg-neutral); border-radius: var(--border-radius); cursor: pointer; }
 
 /* Search form */
 .search-form { display: none; margin: 20px 0; }
