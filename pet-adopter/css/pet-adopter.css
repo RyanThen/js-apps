@@ -1,6 +1,8 @@
 :root {
   --max-columns: 4;
 
+  --font-family-body: 'Montserrat', sans-serif;
+  --font-family-fancy: 'Dancing Script', cursive;
   --font-size-body: 18px;
   --line-height-body: 23px;
 
@@ -19,7 +21,7 @@
 
 * { margin: 0; padding: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--color-main-text); box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Montserrat', sans-serif; }
+body { font-family: var(--font-family-body); }
 p { margin: 15px 0; }
 .container { width: 100%; max-width: 1325px; margin: 0 auto; padding: 15px; }
 
@@ -28,23 +30,26 @@ p { margin: 15px 0; }
 .form-btn { font-size: 16px; padding: 5px 10px; color: var(--color-main-text); background-color: var(--color-neutral-bg); border-radius: 5px; cursor: pointer; transition: 300ms; }
 .form-btn:hover { background-color: lightgrey; transition: 300ms; }
 
-.fixed-btn--right { position: fixed; top: 45vh; right: -30px; padding: 5px 15px; transform: rotate(270deg); transform-origin: top center; z-index: 99; background: var(--color-primary); border: 2px solid #297b7b; border-radius: var(--border-radius) var(--border-radius) 0 0; cursor: pointer; }
+.fixed-btn--right { position: fixed; top: 45vh; right: -30px; padding: 5px 15px; transform: rotate(270deg); transform-origin: top center; z-index: 99; background: var(--color-primary); border: 1px solid #297b7b; border-radius: var(--border-radius) var(--border-radius) 0 0; cursor: pointer; }
 .fixed-btn--right p { color: var(--color-white); }
 /* .fixed-btn--right:hover { background-color: var(--color-primary); border-color: #297b7b; transition: var(--transition); }
 .fixed-btn--right:hover p { color: var(--color-white); } */
 
 /* Slideout */
-.slideout-container { position: fixed; top: 10vh; right: -100%; width: 90%; max-width: 1100px; min-height: 300px; max-height: 500px; overflow-y: scroll; margin: 25px 0 20px 0; padding: 30px; background: var(--color-secondary); border: 2px solid var(--color-primary); border-right: none; border-radius: var(--border-radius) var(--border-radius) 0 0; transition: 500ms; }
-.close { display: inline-block; margin-top: 0; padding: 5px 8px; color: var(--color-primary); background-color: var(--color-white); border: 1px solid var(--color-primary); border-radius: var(--border-radius); cursor: pointer; transition: var(--transition); }
+.slideout-container { position: fixed; top: 10vh; right: -100%; width: 90%; max-width: 1100px; min-height: 300px; max-height: 500px; overflow-y: scroll; margin: 25px 0 20px 0; padding: 30px; background: var(--color-secondary); border: 2px solid var(--color-primary); border-right: none; border-radius: var(--border-radius) 0 0 var(--border-radius); transition: 500ms; }
+.learn-more-select { margin: 5px 0; padding: 3px; border-radius: 10px; border: 2px solid #555555; }
+.close { display: inline-block; margin-top: 0; padding: 5px 8px; color: var(--color-primary); background-color: var(--color-white); border: 2px solid var(--color-primary); border-radius: var(--border-radius); cursor: pointer; transition: var(--transition); }
 .close:hover { color: white; background-color: var(--color-primary); transition: var(--transition); }
 
 .animal-fact-card-container { display: flex; margin: 20px 0 0 0; }
 .animal-fact-img { max-width: 300px; margin-right: 15px; }
+.animal-fact { margin: 5px 0; font-size: 17px; }
+.animal-fact-descriptor { font-size: 17px; font-weight: 700; }
 
 /* Navigation */
 .navigation { background-color: var(--color-white); }
 .nav-content-container { display: flex; justify-content: space-between; align-items: center; }
-.logo-container p { font-family: 'Dancing Script', cursive; font-size: 26px; }
+.logo-container p { font-family: var(--font-family-fancy); font-size: 26px; }
 .nav-items-list { display: flex; list-style-type: none; }
 .nav-items-list li { padding: 8px 20px; }
 .nav-items-list li:first-of-type { padding-left: 0; }
@@ -53,11 +58,12 @@ p { margin: 15px 0; }
 .nav-items-list li a:hover { text-decoration: underline;  transition: var(--transition);}
 
 /* Hero */
-.hero-container { padding: 25px 0; background-image: url(/images/dog-cat-bg-4.png); background-size: cover; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; /* background: linear-gradient(to right, var(--color-primary), var(--color-secondary));*/ }
+.hero-container { padding: 25px 0; /*fallback*/background: var(--color-secondary); background: url(/images/dog-cat-bg-4.png); background-size: cover; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; }
 .hero-content-container { display: flex; justify-content: flex-start;}
 
 .hero-search-callout { flex: 1; display: flex; }
 .hero-search-container { height: fit-content; padding: 25px; background-color: var(--color-white); border-radius: 20px; box-shadow: 0 0 15px -8px black; }
+.hero-search-headline { margin-bottom: 15px; font-size: 16px; }
 
 /* Search method options */
 .search-method-container { display: flex; align-items: center;}
