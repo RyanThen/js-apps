@@ -68,14 +68,14 @@ const generateAnimalFactCard = function(animal = 'dog') {
             </div>
         
             <div class="animal-fact-content-container">
-              <p class="animal-fact">Breed: ${data[0].name}</p>
-              <p class="animal-fact">Breed group: ${data[0].breed_group}</p>
-              <p class="animal-fact">Origin: ${data[0].origin}</p>
-              <p class="animal-fact">Bred for: ${data[0].bred_for}</p>
-              <p class="animal-fact">Temperament: ${data[0].temperament}</p>
-              <p class="animal-fact">Life span: ${data[0].life_span}</p>
-              <p class="animal-fact">Height: ${data[0].height.metric} cm (${data[0].height.imperial} in)</p>
-              <p class="animal-fact">Weight: ${data[0].weight.metric} kg (${data[0].weight.imperial} lbs)</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Breed:</span> ${data[0].name}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Breed group:</span> ${data[0].breed_group}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Origin:</span> ${data[0].origin}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Bred for:</span> ${data[0].bred_for}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Temperament:</span> ${data[0].temperament}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Life span:</span> ${data[0].life_span}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Height:</span> ${data[0].height.metric} cm (${data[0].height.imperial} in)</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Weight:</span> ${data[0].weight.metric} kg (${data[0].weight.imperial} lbs)</p>
             </div>
           </div>
         `
@@ -89,14 +89,14 @@ const generateAnimalFactCard = function(animal = 'dog') {
             </div>
         
             <div class="animal-fact-content-container">
-              <p class="animal-fact">Breed: ${data[0].name}</p>
-              <p class="animal-fact">Child friendly: ${data[0].child_friendly}</p>
-              <p class="animal-fact">Dog friendly: ${data[0].dog_friendly}</p>
-              <p class="animal-fact">Temperament: ${data[0].temperament}</p>
-              <p class="animal-fact">Life span: ${data[0].life_span}</p>
-              <p class="animal-fact">Origin: ${data[0].origin}</p>
-              <p class="animal-fact">Weight: ${data[0].weight.metric} kg (${data[0].weight.imperial} lbs)</p>
-              <p class="animal-fact">Description: ${data[0].description}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Breed:</span> ${data[0].name}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Child friendly:</span> ${data[0].child_friendly}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Dog friendly:</span> ${data[0].dog_friendly}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Temperament:</span> ${data[0].temperament}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Life span:</span> ${data[0].life_span}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Origin:</span> ${data[0].origin}</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Weight:</span> ${data[0].weight.metric} kg (${data[0].weight.imperial} lbs)</p>
+              <p class="animal-fact"><span class="animal-fact-descriptor">Description:</span> ${data[0].description}</p>
             </div>
           </div>
         `

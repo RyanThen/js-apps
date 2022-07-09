@@ -3,6 +3,9 @@ const searchMethodContainer = document.querySelector('.search-method-container')
 const searchMethods = document.querySelectorAll('.search-method');
 const loadMoreBtn = document.querySelector('.load-more-btn button');
 
+// open first form on page load
+allForms[0].classList.add('search-form-show');
+
 searchMethodContainer.addEventListener('click', function(e) {
   resetSearch();
   // hide all forms
@@ -56,7 +59,7 @@ const searchSpecificAnimal = function(searchFromInputValue) {
 searchFormSubmitBtn.addEventListener('click', function(e) {
   e.preventDefault();
   searchSpecificAnimal(searchFormInput.value);
-  searchTermsConfirmation.innerHTML = `<p>Searching for animal name/id: ${searchFormInput.value}</p>`;
+  searchTermsConfirmation.innerHTML = `<p>Searching for animal name or ID: ${searchFormInput.value}</p>`;
   pagination = 2;
 });
 
@@ -79,7 +82,7 @@ searchFilterSubmitBtn.addEventListener('click', function(e){
   // clear search results container
   searchResultsContainer.innerHTML = '';
 
-  searchTermsConfirmation.innerHTML = `<p>Searching for ${ageSearchFilter} ${speciesSearchFilter}s</p>`;
+  searchTermsConfirmation.innerHTML = `<p>Searching for ${ageSearchFilter === 'No Preference' ? 'all' : ageSearchFilter.toLowerCase()} ${speciesSearchFilter === 'No Preference' ? 'animals' : speciesSearchFilter.toLowerCase() + 's'}</p>`;
 
   filteredAnimalSearch('https://api.petfinder.com/v2/animals/');
   pagination = 2;
