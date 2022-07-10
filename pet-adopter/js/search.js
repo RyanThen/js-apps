@@ -1,5 +1,6 @@
 // Search options button functionality
 const searchMethodContainer = document.querySelector('.search-method-container');
+const searchMethodSingleContainer = document.querySelectorAll('.search-method-single-container');
 const searchMethods = document.querySelectorAll('.search-method');
 const loadMoreBtn = document.querySelector('.load-more-btn button');
 
@@ -10,9 +11,14 @@ searchMethodContainer.addEventListener('click', function(e) {
   resetSearch();
   // hide all forms
   allForms.forEach((el, index) => allForms[index].classList.remove('search-form-show'));
+  // remove active class from search method
+  searchMethodSingleContainer.forEach((searchMethodContainer) => searchMethodContainer.classList.contains('active-search') ? searchMethodContainer.classList.remove('active-search') : '');
   // show selected form
   searchMethods.forEach(function(el, i) {
-    if(e.target === el) allForms[i].classList.add('search-form-show');
+    if(e.target === el) { 
+      allForms[i].classList.add('search-form-show');
+      el.closest('.search-method-single-container').classList.add('active-search');
+    }
   })
 })
 
@@ -103,10 +109,3 @@ searchMethodClear.addEventListener('click', function() {
 
     resetSearch();
 })
-
-/* #######################################################
-##########################################################
- CONTINUE WORKING THROUGH CLEARING SEARCH PARAMETERS AND
-    AND OTHER DATA WHEN USER CLICKS THE CLEAR BUTTON
-##########################################################
-####################################################### */
