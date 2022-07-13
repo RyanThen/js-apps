@@ -14,9 +14,6 @@ const buildDropdownSelectorList = function(apiKey, htmlContainer, url) {
   fetch(url, { headers: { "x-api-key": apiKey } })
     .then(response => response.json())
     .then(data => {
-
-      console.log(data);
-
       // build <option> list template for dropdown
       data.forEach(breed => {
         breedSelectorTemplate += `
@@ -25,7 +22,7 @@ const buildDropdownSelectorList = function(apiKey, htmlContainer, url) {
       });
       // inject <option> list template into HTML
       htmlContainer.insertAdjacentHTML('beforeend', breedSelectorTemplate);
-
+      // reset template for next dropdown list
       breedSelectorTemplate = '';
     });
 }
@@ -33,7 +30,7 @@ const buildDropdownSelectorList = function(apiKey, htmlContainer, url) {
 buildDropdownSelectorList(theDogApiKey, learnMoreSelector1, 'https://api.thedogapi.com/v1/breeds');
 buildDropdownSelectorList(theCatApiKey, learnMoreSelector2, 'https://api.thecatapi.com/v1/breeds');
 
-// Generate animal fact card when a breed is selected in dropdown (pulling from TheDogApi and TheCatApi)
+// Generate animal fact card when breed is selected in dropdown (pulling from TheDogApi and TheCatApi)
 let dropdownActiveSelection;
 let animalApiKey;
 let breedImageID;
@@ -141,7 +138,7 @@ fixedBtnRight.addEventListener('click', function() {
 
 closeCTA.addEventListener('click', openCloseSlideout)
 
-// Nav slideout item
+// Main nav item that triggers slideout
 const navSlideoutItem = document.querySelector('#nav-slideout-item');
 
 navSlideoutItem.addEventListener('click', function(e) {
@@ -149,7 +146,6 @@ navSlideoutItem.addEventListener('click', function(e) {
   openCloseSlideout();
   generateAnimalFactCard('dog');
 })
-
 
 // Random Cat Fact API Call (Meow Facts)
 const factoidRefresh = document.querySelector('.factoid-refresh');

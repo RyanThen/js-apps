@@ -1,6 +1,6 @@
 // Search options button functionality
 const searchMethodContainer = document.querySelector('.search-method-container');
-const searchMethodSingleContainer = document.querySelectorAll('.search-method-single-container');
+const searchMethodSingleContainer = searchMethodContainer.querySelectorAll('.search-method-single-container');
 const searchMethods = document.querySelectorAll('.search-method');
 const loadMoreBtn = document.querySelector('.load-more-btn button');
 
@@ -32,7 +32,7 @@ const searchSpecificAnimal = function(searchFromInputValue) {
         // replace search results container content with new animal 
         searchResultsContainer.innerHTML = generateCardTemplate([data.animal]) ;
       })
-      .catch(() => searchResultsContainer.innerHTML = '<p>No search results found, please try again.<p>');
+      .catch(() => searchResultsContainer.innerHTML = '<p>No search results found, please try again or load more results.<p>');
   }
 
   // if search term is a string
@@ -56,7 +56,7 @@ const searchSpecificAnimal = function(searchFromInputValue) {
           }
         });
       })
-      .catch(err => console.log(err));
+      .catch(() => searchResultsContainer.innerHTML = '<p>No search results found, please try again or load more results.<p>');
   }
 
 }
@@ -87,9 +87,9 @@ searchFilterSubmitBtn.addEventListener('click', function(e){
   }
   // clear search results container
   searchResultsContainer.innerHTML = '';
-
+  // display search details to user
   searchTermsConfirmation.innerHTML = `<p>Searching for ${ageSearchFilter === 'No Preference' ? 'all' : ageSearchFilter.toLowerCase()} ${speciesSearchFilter === 'No Preference' ? 'animals' : speciesSearchFilter.toLowerCase() + 's'}</p>`;
-
+  // perform search
   filteredAnimalSearch('https://api.petfinder.com/v2/animals/');
   pagination = 2;
 });

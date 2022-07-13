@@ -16,7 +16,7 @@ const options = {
   threshold: 0.5
 }
 
-// create intersection observer (inside setTimeout to avoid firing on page load)
+// create intersection observer (inside setTimeout to avoid firing immediately on page load)
 setTimeout(function(){
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -43,6 +43,6 @@ loadMorePaginationBtn.addEventListener('click', () => {
   for(let i = 0; i < 4; i++) {
     loadPaginationNext('afterbegin');
   }
+
   setTimeout(() => searchLoadingContainer.innerHTML = '', 2000)
-  
 });
