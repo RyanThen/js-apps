@@ -12,7 +12,7 @@ const searchResultsContainer = document.querySelector('.search-results-container
 let speciesSearchFilter;
 let ageSearchFilter;
 
-
+// Reset search terms
 const resetSearch = function() {
   searchFilterInputs.forEach(el => el.checked = false);
   speciesSearchFilter = '';
@@ -78,7 +78,6 @@ const filteredAnimalSearch = function(url, htmlLocation = 'beforeend') {
   fetch(url, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
     .then(response => response.json())
     .then(data => {
-    
       // generate filtered search cards
       const generateFilteredCards = function(species, age) {
         let speciesSingle;
@@ -91,14 +90,14 @@ const filteredAnimalSearch = function(url, htmlLocation = 'beforeend') {
           age === 'No Preference' ? ageSingle = animal.age : ageSingle = age;
           // build filtered animal search template
           if(animal.species === speciesSingle && animal.age === ageSingle) filteredSearchTemplate += generateCardTemplate([animal]);      
-          // include animals defined as 'young' and 'senior' in search results
+          // include animals defined as 'young' and 'senior' in search results too
           if (ageSingle === 'Baby' && animal.age === 'Young' && animal.species === speciesSingle) filteredSearchTemplate += generateCardTemplate([animal]);      
           if (ageSingle === 'Adult' && animal.age === 'Senior' && animal.species === speciesSingle) filteredSearchTemplate += generateCardTemplate([animal]);      
         });
-    
+
         searchResultsContainer.insertAdjacentHTML(htmlLocation, filteredSearchTemplate);
       }
-    
+
       generateFilteredCards(speciesSearchFilter, ageSearchFilter);
     })
 }
@@ -113,7 +112,7 @@ const loadPaginationNext = (placement = 'afterbegin') => {
       fetch('https://api.petfinder.com/v2/animals?page=' + pagination, { headers: { Authorization: `Bearer ${petFinderApiToken}` } })
         .then(response => response.json())
         .then(data => {
-          // revise strings in order to compare for conditional check
+          // make all strings the same for conditional check
           let searchFormInputValueRevised = searchFormInput.value.toLowerCase().trim();
           let animalNameRevised;
           
@@ -128,7 +127,6 @@ const loadPaginationNext = (placement = 'afterbegin') => {
         })
         .catch(err => console.log(err));
         pagination++;
-        console.log(pagination);
         return;
     }
 
@@ -136,7 +134,6 @@ const loadPaginationNext = (placement = 'afterbegin') => {
     if(speciesSearchFilter) {
       filteredAnimalSearch('https://api.petfinder.com/v2/animals?page=' + pagination, placement);
       pagination++;
-      console.log(pagination);
       return;
     } 
     
@@ -148,11 +145,10 @@ const loadPaginationNext = (placement = 'afterbegin') => {
           // populate another batch of animals cards to the end of container
           searchResultsContainer.insertAdjacentHTML(placement, generateCardTemplate(data.animals));
           pagination++;
-          console.log(pagination);
           return;
         })
         .catch(err => console.log(err));
     }
+    
     pagination++;
-    console.log(pagination);
 };
