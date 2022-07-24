@@ -22,3 +22,11 @@ This is a personal project that I undertook in an effort to develop my skills in
 - <a href="https://thedogapi.com/" target="_blank">The Dog API</a>
 - <a href="https://thecatapi.com/" target="_blank">The CAT API</a>
 - <a href="https://github.com/wh-iterabb-it/meowfacts" target="_blank">Meow Facts API</a>
+
+### Features
+
+- Functioning search (search by animal type, age, name, ID)
+- Infinite scroll / Load more animals
+- Random cat fact generator
+- Learn about different dog/cat breeds
+- Responsive
