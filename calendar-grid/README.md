@@ -1,6 +1,6 @@
 Working example:
 
-<a href="https://ryanthen.com/portfolio-website-template/projects/js-apps/calendar-grid/index.html" target="_blank">https://ryanthen.com/portfolio-website-template/projects/js-apps/calendar-grid/index.html</a>
+<a href="https://ryanthen.github.io/ryan-then-portfolio-website/projects/web-components/calendar-grid/index.html" target="_blank">https://ryanthen.github.io/ryan-then-portfolio-website/projects/web-components/calendar-grid/index.html</a>
 
 --OR--
 
