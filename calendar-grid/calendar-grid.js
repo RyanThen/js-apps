@@ -10,15 +10,15 @@ const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 
 //*** DATA ***//
 const data = [
-    ['Real Estate Prelicensing', new Date('5/5/2022'), '12:00 pm', 'M, W, F', 'Phoenix', 'Register', '#'],
-    ['Appraiser Licensing', new Date('6/3/2022'), '10:00 am', 'M, T, Th', 'Tucson', 'Register', '#'],
-    ['Mortgage Broker Licensing', new Date('7/3/2022'), '11:00 am', 'T, Th', 'Tempe', 'Sold Out', '#'],
-    ['Real Estate Prelicensing', new Date('7/23/2022'), '11:00 am', 'M, T, Th', 'Tucson', 'Sold Out', '#'],
-    ['Real Estate Prelicensing', new Date('8/5/2022'), '11:00 am', 'M, T, Th', 'Tucson', 'Register', '#'],
-    ['Mortgage Broker Licensing', new Date('8/10/2022'), '9:00 am', 'M, T, Th', 'Phoenix', 'Register', '#'],
-    ['Continuing Education', new Date('9/6/2022'), '3:00 pm', 'M, W, F', 'Phoenix', 'Register', '#'],
-    ['Real Estate Prelicensing', new Date('9/29/2022'), '5:00 pm', 'M, T, Th', 'Tucson', 'Register', '#'],
-    ['Real Estate Prelicensing', new Date('10/25/2022'), '6:00 pm', 'M, W, F', 'Tempe', 'Register', '#']
+    ['Real Estate Prelicensing', new Date('9/5/2030'), '12:00 pm', 'M, W, F', 'Phoenix', 'Register', '#'],
+    ['Appraiser Licensing', new Date('10/3/2030'), '10:00 am', 'M, T, Th', 'Tucson', 'Register', '#'],
+    ['Mortgage Broker Licensing', new Date('10/5/2030'), '11:00 am', 'T, Th', 'Tempe', 'Sold Out', '#'],
+    ['Real Estate Prelicensing', new Date('10/23/2030'), '11:00 am', 'M, T, Th', 'Tucson', 'Sold Out', '#'],
+    ['Real Estate Prelicensing', new Date('11/5/2030'), '11:00 am', 'M, T, Th', 'Tucson', 'Register', '#'],
+    ['Mortgage Broker Licensing', new Date('11/10/2030'), '9:00 am', 'M, T, Th', 'Phoenix', 'Register', '#'],
+    ['Continuing Education', new Date('11/16/2030'), '3:00 pm', 'M, W, F', 'Phoenix', 'Register', '#'],
+    ['Real Estate Prelicensing', new Date('11/29/2030'), '5:00 pm', 'M, T, Th', 'Tucson', 'Register', '#'],
+    ['Real Estate Prelicensing', new Date('12/5/2030'), '6:00 pm', 'M, W, F', 'Tempe', 'Register', '#']
 ];
 
 // Filter data into new array of upcoming courses
