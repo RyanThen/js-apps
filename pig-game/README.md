@@ -1,1 +1,1 @@
-Play game at: https://ryanthen.com/portfolio-website-template/projects/js-apps/pig-game/index.html
+Play game at: <a href="https://ryanthen.github.io/ryan-then-portfolio-website/projects/js-apps/pig-game/index.html">https://ryanthen.github.io/ryan-then-portfolio-website/projects/js-apps/pig-game/index.html</a>
